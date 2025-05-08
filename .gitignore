@@ -1,0 +1,30 @@
+#.gitignore
+# --- #
+
+# Environment files
+# Explicitly DENY arbitrary .env* files to be tracked.
+.env*
+# Explicitly ALLOW specific .env files to be tracked (secrets are encrypted with SOPS in .env.sops.yaml)
+!.env.tracked
+!.env.sops.yaml
+
+# Mise
+.mise/
+mise* # Ignore downloaded binaries/shims
+
+# SOPS / Age
+# Explicitly ALLOW encrypted AGE files to be tracked.
+!*.age
+# Explicitly DENY unencrypted AGE key files to be tracked.
+keys.txt
+# Explicitly DENY encrypted AGE **key file** to be tracked. 
+# While the key file is encrypted, it should still not be stored in the repository.
+keys.age
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+.ruff_cache/

@@ -1,0 +1,51 @@
+# .mise.toml - Manage development tools, environment, and tasks
+
+# Load environment variables from .env file(s)
+# Declare multiple '_.file' directives by wrapping them in an array ([[env]]).
+[[env]]
+_.file = ".env.tracked"
+[[env]]
+_.file = ".env.sops.yaml"
+#_.python.venv = { path = ".venv", create = true }
+
+# --- Tools ---
+# Pin tool versions for reproducible environments
+[tools]
+age = "1.2.1"
+#python = "3.13.3"
+#ruff = "0.11.5"
+sops = "3.10.2"
+#uv = "0.6.16"
+
+# --- Tasks ---
+
+# Secrets Management 
+[tasks.generate-age-keypair]
+description = "Generate AGE keypair if not already present."
+run = 'bash ./scripts/generate-age-keypair.sh'
+alias = ["generate"]
+
+[tasks.edit-encrypt]
+description = "Edit the encrypted secrets env file using SOPS via EDITOR."
+run = 'sops edit .env.sops.yaml'
+alias = ["edit"]
+
+[tasks.encrypt]
+description = "Encrypt the secrets env file using SOPS."
+run = 'sops encrypt --in-place .env.sops.yaml'
+alias = ["e"]
+
+[tasks.decrypt]
+description = "DEBUG ONLY: Decrypt secrets file to stdout."
+run = 'sops decrypt .env.sops.yaml'
+alias = ["d"]
+
+# # Development Environment Setup
+# [tasks.venv]
+# description = "Create/update the local Python virtual environment using uv."
+# run = '''
+# uv venv .venv --python $PYTHON_VERSION
+# uv sync --all-groups -p $(mise which python)
+# '''
+# alias = ["install-dev"]
+

@@ -1,0 +1,34 @@
+# .sops.yaml - Configuration for SOPS encryption tool
+# This file is used to configure SOPS for encrypting/decrypting files.
+
+creation_rules:
+  # - # `path_regex` is a regular expression that matches the file paths to be encrypted.
+  #   # The regex '.*' matches all files
+  #   path_regex: 'secrets/prod-db/.*'
+
+  #   # `encrypted_regex` is a regular expression that matches the keys in structured files (eg YAML, JSON)
+  #   # If omitted, defaults to encrypting all keys.
+  #   # encrypted_regex: '^(data|password)$'
+
+  #   # `key_groups` defines the groups of keys that are required for decryption.
+  #   # Decryption requires at least one entity from each group.
+  #   key_groups:
+  #     - age: # Group 1: Admins (need one of these)
+  #         - 'age1admin1...'
+  #         - 'age1admin2...'
+  #     - age: # Group 2: Production Server (need this specific key)
+  #         - 'age1prodserver...'
+
+  #   # `shamir_threshold` is the minimum number of key_groups required to decrypt the file.
+  #   # The default is equal to the number of defined groups.
+  #   shamir_threshold: 2
+
+  # eg.:
+  # - path_regex: .env.sops.yaml$
+  #   key_groups:
+  #     - age: 
+  #         - age1mqn65md2mf4yu9wlrl2j7de780tecpue2pehh6zg09z8fwl7v5ys8gp696
+
+  # or, simply:
+  - path_regex: '.*'
+    age: age1mqn65md2mf4yu9wlrl2j7de780tecpue2pehh6zg09z8fwl7v5ys8gp696
