@@ -42,10 +42,10 @@ Other dependencies (SOPS and AGE) are installed via Mise. Linked for reference o
    ```
 
 2. **Initialise Mise**
-  ```bash
-  mise trust
-  mise install
-  ```
+   ```bash
+   mise trust
+   mise install
+   ```
 
 3. **Generate AGE Keypair**:
    Run the following Mise task to generate an AGE keypair.  
