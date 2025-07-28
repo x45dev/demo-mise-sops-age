@@ -27,7 +27,7 @@ scripts/         # Helper scripts
 ### Prerequisites
 
 Ensure that Mise is installed:
-- [Mise](https://github.com/mise-sh/mise)
+- [Mise](https://mise.jdx.dev/installing-mise.html)
 
 Other dependencies (SOPS and AGE) are installed via Mise. Linked for reference only.
 - [SOPS](https://github.com/mozilla/sops)
